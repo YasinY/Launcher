@@ -32,17 +32,20 @@ public class LauncherController {
     public void handleLogin() {
         LauncherNode launcherNode = new LoginButton(loginButton);
         launcherNode.onClick();
+        System.out.println("Triggered login");
     }
 
     @FXML
     public void handleRegistration() {
         LauncherNode launcherNode = new RegistrationButton(registrationButton);
         launcherNode.onClick();
+        System.out.println("Triggered registration!");
     }
     /**
      * Adds images to each seperate page
      */
     public void addImages() {
-        pagination.setPageFactory((index) -> new ImageView("./data/images/" + index +".png"));
+        System.out.println("Initialized Images based on pagination");
+        //pagination.setPageFactory((index) -> new ImageView("./data/images/" + index +".png"));
     }
 }

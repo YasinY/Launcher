@@ -21,6 +21,6 @@ public class RegistrationButton extends LauncherNode {
 
     @Override
     public void onClick() {
-
+        System.out.println("Onclick => registration");
     }
 }
