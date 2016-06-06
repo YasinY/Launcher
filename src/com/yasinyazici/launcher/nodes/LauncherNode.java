@@ -1,4 +1,4 @@
-package com.launcher.yasinyazici.nodes;
+package com.yasinyazici.launcher.nodes;
 
 import javafx.scene.Node;
 

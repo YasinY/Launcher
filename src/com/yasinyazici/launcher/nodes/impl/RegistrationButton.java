@@ -1,7 +1,7 @@
-package com.launcher.yasinyazici.nodes.impl;
+package com.yasinyazici.launcher.nodes.impl;
 
-import com.launcher.yasinyazici.nodes.LauncherNode;
-import com.launcher.yasinyazici.nodes.NodeStage;
+import com.yasinyazici.launcher.nodes.LauncherNode;
+import com.yasinyazici.launcher.nodes.NodeStage;
 import javafx.scene.Node;
 
 /**
@@ -21,6 +21,6 @@ public class RegistrationButton extends LauncherNode {
 
     @Override
     public void onClick() {
-
+        System.out.println("Onclick => registration");
     }
 }

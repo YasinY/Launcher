@@ -1,8 +1,10 @@
-package com.launcher.yasinyazici;
+package com.yasinyazici.launcher;
 
+import com.yasinyazici.launcher.engine.Engine;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
@@ -19,6 +21,16 @@ public class Launcher extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent parent = FXMLLoader.load(getClass().getResource("launcher.fxml"));
-        parent.setVisible(true);
+        primaryStage.setScene(new Scene(parent));
+        primaryStage.centerOnScreen();
+        primaryStage.show();
+        init();
+    }
+
+    /**
+     * Initializes all tasks
+     */
+    public void init() {
+        new Engine().init();
     }
 }
