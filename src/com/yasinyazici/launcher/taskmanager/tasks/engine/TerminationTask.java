@@ -1,11 +1,9 @@
-package com.yasinyazici.launcher.taskmanager.impl;
+package com.yasinyazici.launcher.taskmanager.tasks.engine;
 
 import com.yasinyazici.launcher.taskmanager.ActiveTasks;
 import com.yasinyazici.launcher.taskmanager.Task;
 
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
-import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
