@@ -1,15 +1,13 @@
 package com.yasinyazici.launcher.taskmanager;
 
-import org.omg.PortableInterceptor.ACTIVE;
-
 import java.util.Queue;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Yasin on 03/06/2016.
+ * Yet only scheduled executors will be supported unless others are needed.
  */
 public class TaskExecutor {
 
@@ -19,7 +17,6 @@ public class TaskExecutor {
 
     private ScheduledExecutorService scheduledExecutor = Executors.newScheduledThreadPool(8);
 
-    private ExecutorService executorService = Executors.newFixedThreadPool(8);
 
     /**
      * Creates a new {@link TaskExecutor} instance
@@ -41,16 +38,14 @@ public class TaskExecutor {
      * the task
      */
     private void execute() {
+        Queue<Task> tasks = taskQueue.getTaskQueue();
         scheduledExecutor.scheduleAtFixedRate(() -> {
-            Queue<Task> tasks = taskQueue.getTaskQueue();
             if (tasks.size() == 0) {
-                System.out.println("Queue is empty");
+                //System.out.println("Queue is empty");
                 return;
             }
-            Task task = taskQueue.getTaskQueue().peek();
-            System.out.println("Running task " + task.getTaskName() + " now");
+            Task task = taskQueue.getTaskQueue().poll();
             task.run();
-            taskQueue.removeTask(task.getTaskName());
             activeTasks.submitTask(task);
         }, 0, 100, TimeUnit.MILLISECONDS);
     }
@@ -61,8 +56,5 @@ public class TaskExecutor {
 
     public ScheduledExecutorService getScheduledExecutor() {
         return scheduledExecutor;
-    }
-    public ExecutorService getExecutor() {
-        return executorService;
     }
 }

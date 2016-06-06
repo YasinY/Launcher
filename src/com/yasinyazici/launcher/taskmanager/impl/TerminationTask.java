@@ -3,7 +3,9 @@ package com.yasinyazici.launcher.taskmanager.impl;
 import com.yasinyazici.launcher.taskmanager.ActiveTasks;
 import com.yasinyazici.launcher.taskmanager.Task;
 
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -26,8 +28,8 @@ public class TerminationTask extends Task {
         return getScheduledExecutor().scheduleAtFixedRate(() -> {
             ActiveTasks.activeTasks.stream().filter(task -> task.destroyable()).forEach(task -> {
                 System.out.println("Destroyed task " + task.getTaskName());
-                task.onDestroy();
-                task.scheduledFuture().cancel(true);
+                ActiveTasks.activeTasks.remove(task);
+                task.getScheduledExecutor().shutdownNow();
             });
         }, 0, 100, TimeUnit.MILLISECONDS);
     }
