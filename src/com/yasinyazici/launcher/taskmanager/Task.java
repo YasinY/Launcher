@@ -10,9 +10,12 @@ import java.util.concurrent.Future;
 public abstract class Task extends TaskExecutor implements Runnable {
 
 
-    private String taskName;
+    private String taskName; //The name to identify the task with
 
-    public abstract Future<?> scheduledFuture();
+    public abstract Future<?> scheduledFuture(); //The task to execute
+
+    public abstract boolean destroyable(); //false by default
+
 
     /**
      * Creates a new {@link Task} instance
@@ -21,6 +24,14 @@ public abstract class Task extends TaskExecutor implements Runnable {
      */
     public Task(String taskName) {
         this.taskName = taskName;
+    }
+
+    /**
+     * Destroys a task if boolean {@code destroyable} equals true, throws exception otherwise.
+     * See  task {@link com.yasinyazici.launcher.taskmanager.impl.TerminationTask} as reference for further code.
+     */
+    public void onDestroy() {
+
     }
 
     /**
@@ -43,5 +54,6 @@ public abstract class Task extends TaskExecutor implements Runnable {
     public String getTaskName() {
         return taskName;
     }
+
 
 }

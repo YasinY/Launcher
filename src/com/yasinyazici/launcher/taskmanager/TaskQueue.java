@@ -1,7 +1,5 @@
 package com.yasinyazici.launcher.taskmanager;
 
-import com.google.common.base.Preconditions;
-
 import java.util.Iterator;
 import java.util.Objects;
 import java.util.Queue;
@@ -49,9 +47,9 @@ public class TaskQueue {
     }
 
     /**
-     * Gets
+     * Gets the queue in which all tasks are located in
      *
-     * @return
+     * @return taskQueue the task queue being returned.
      */
     public Queue<Task> getTaskQueue() {
         return taskQueue;

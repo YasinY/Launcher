@@ -22,9 +22,21 @@ public class EngineUpdateTask extends Task {
     @Override
     public Future<?> scheduledFuture() {
         return getScheduledExecutor().scheduleAtFixedRate(() -> {
-
-        }, 0, 1, TimeUnit.MINUTES);
+            System.out.println("Render here");
+        }, 0, 10, TimeUnit.SECONDS);
     }
+
+    @Override
+    public boolean destroyable() {
+        return true;
+    }
+
+    @Override
+    public void onDestroy() {
+
+    }
+
+
 
 
 }

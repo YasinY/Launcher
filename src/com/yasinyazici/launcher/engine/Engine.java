@@ -9,30 +9,28 @@ public class Engine {
 
     private TaskHandler taskHandler;
 
-    private EngineUpdateThread engineUpdateThread;
-
     /**
      * Creates a new {@link Engine} instance
      */
     public Engine() {
         this.taskHandler = new TaskHandler();
-        this.engineUpdateThread = new EngineUpdateThread();
     }
 
+    /**
+     * Initializes the engine by submitting essential tasks, initialising the task executor to process these and at last
+     * initializing the threads for the application
+     */
     public void init() {
         taskHandler.submitTasks();
+        taskHandler.getTaskExecutor().init();
         initializeThreads();
     }
 
+    /**
+     * The threads to initialize upon start up, see {@link com.yasinyazici.launcher.engine} as reference
+     */
     private void initializeThreads() {
-        new EngineUpdateThread();
+        new EngineUpdateThread().start();
     }
 
-    public TaskHandler getTaskHandler() {
-        return taskHandler;
-    }
-
-    public EngineUpdateThread getEngineUpdateThread() {
-        return engineUpdateThread;
-    }
 }

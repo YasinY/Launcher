@@ -24,13 +24,12 @@ public class Launcher extends Application {
         primaryStage.setScene(new Scene(parent));
         primaryStage.centerOnScreen();
         primaryStage.show();
-        init();
+        initializeEngine();
     }
 
-    /**
-     * Initializes all tasks
-     */
-    public void init() {
+    private void initializeEngine() {
         new Engine().init();
     }
+
+
 }
