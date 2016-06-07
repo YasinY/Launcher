@@ -9,9 +9,9 @@ import java.util.stream.Stream;
 /**
  * Created by digital on 06.06.16.
  */
-public class ActiveTasks {
+public class ActiveTasksHandler {
 
-    public static Set<Task> activeTasks = new HashSet<>(); //So it's accessible for every class,
+    private Set<Task> activeTasks = new HashSet<>(); //So it's accessible for every class,
 
 
     /**
@@ -35,5 +35,9 @@ public class ActiveTasks {
                     taskIterator.remove();
                 }
         }
+    }
+
+    public Set<Task> getActiveTasks() {
+        return activeTasks;
     }
 }
