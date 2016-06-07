@@ -1,6 +1,8 @@
 package com.yasinyazici.launcher.taskmanager;
 
 
+import com.yasinyazici.launcher.taskmanager.tasks.engine.TerminationTask;
+
 import java.util.concurrent.Future;
 
 /**
@@ -12,7 +14,7 @@ public abstract class Task extends TaskExecutor implements Runnable {
 
     private String taskName; //The name to identify the task with
 
-    public abstract Future<?> scheduledFuture(); //The task to execute
+    public abstract Future<?> future(); //The task to execute
 
     public abstract boolean destroyable(); //false by default
 
@@ -28,7 +30,7 @@ public abstract class Task extends TaskExecutor implements Runnable {
 
     /**
      * Destroys a task if boolean {@code destroyable} equals true, throws exception otherwise.
-     * See  task {@link com.yasinyazici.launcher.taskmanager.impl.TerminationTask} as reference for further code.
+     * See  task {@link TerminationTask} as reference for further code.
      */
     public void onDestroy() {
 
@@ -41,7 +43,7 @@ public abstract class Task extends TaskExecutor implements Runnable {
      */
     @Override
     public void run() {
-        scheduledFuture();
+        future();
     }
 
 

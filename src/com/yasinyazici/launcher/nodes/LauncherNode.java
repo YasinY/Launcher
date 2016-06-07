@@ -11,7 +11,6 @@ import java.util.List;
 public abstract class LauncherNode {
 
 
-    public List<Node> registeredNodes = new ArrayList<>();
 
 
     private Node node;
@@ -20,17 +19,10 @@ public abstract class LauncherNode {
         this.node = node;
     }
 
-    public abstract NodeStage nodeStage();
-
     public abstract void onClick();
 
-
-    public List<Node> getRegisteredNodes() {
-        return registeredNodes;
-    }
 
     public Node getNode() {
         return node;
     }
-
 }

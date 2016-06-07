@@ -14,7 +14,7 @@
       <TextField layoutX="269.0" layoutY="362.0" visible="false" />
       <Text layoutX="320.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" visible="false" wrappingWidth="64.0" />
       <PasswordField layoutX="269.0" layoutY="405.0" visible="false" />
-      <Button fx:id="loginButton" layoutX="275.0" layoutY="389.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="47.0" prefWidth="155.0" text="Log-in" />
-      <Button fx:id="registrationButton" layoutX="275.0" layoutY="442.0" mnemonicParsing="false" onAction="#handleRegistration" prefHeight="47.0" prefWidth="155.0" text="Register" />
+      <Button fx:id="loginButton" layoutX="275.0" layoutY="389.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="47.0" prefWidth="155.0" text="Log-in" />
+      <Button fx:id="registrationButton" layoutX="275.0" layoutY="442.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="47.0" prefWidth="155.0" text="Register" />
    </children>
 </AnchorPane>

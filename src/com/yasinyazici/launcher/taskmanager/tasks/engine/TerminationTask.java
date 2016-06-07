@@ -1,8 +1,9 @@
 package com.yasinyazici.launcher.taskmanager.tasks.engine;
 
-import com.yasinyazici.launcher.taskmanager.ActiveTasks;
+import com.yasinyazici.launcher.taskmanager.ActiveTasksHandler;
 import com.yasinyazici.launcher.taskmanager.Task;
 
+import java.util.Set;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
@@ -22,12 +23,14 @@ public class TerminationTask extends Task {
     }
 
     @Override
-    public Future<?> scheduledFuture() {
+    public Future<?> future() {
         return getScheduledExecutor().scheduleAtFixedRate(() -> {
-            ActiveTasks.activeTasks.stream().filter(task -> task.destroyable()).forEach(task -> {
-                System.out.println("Destroyed task " + task.getTaskName());
-                ActiveTasks.activeTasks.remove(task);
+            ActiveTasksHandler activeTasksHandler = getTaskQueue().getActiveTasksHandler();
+            activeTasksHandler.getActiveTasks().stream().filter(task -> task.destroyable()).forEach(task -> {
+                task.onDestroy();
                 task.getScheduledExecutor().shutdownNow();
+                activeTasksHandler.removeTask(getTaskName());
+                System.out.println("Successfully destroyed task!");
             });
         }, 0, 100, TimeUnit.MILLISECONDS);
     }

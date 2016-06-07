@@ -13,7 +13,7 @@ public class TaskExecutor {
 
     private TaskQueue taskQueue = new TaskQueue();
 
-    private ActiveTasks activeTasks = new ActiveTasks();
+    private ActiveTasksHandler activeTasks = new ActiveTasksHandler();
 
     private ScheduledExecutorService scheduledExecutor = Executors.newScheduledThreadPool(8);
 
@@ -41,7 +41,6 @@ public class TaskExecutor {
         Queue<Task> tasks = taskQueue.getTaskQueue();
         scheduledExecutor.scheduleAtFixedRate(() -> {
             if (tasks.size() == 0) {
-                //System.out.println("Queue is empty");
                 return;
             }
             Task task = taskQueue.getTaskQueue().poll();

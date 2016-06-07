@@ -1,5 +1,7 @@
 package com.yasinyazici.launcher.taskmanager;
 
+import com.google.common.base.Preconditions;
+
 import java.util.Iterator;
 import java.util.Objects;
 import java.util.Queue;
@@ -12,6 +14,8 @@ import java.util.stream.Stream;
 public class TaskQueue {
 
     private Queue<Task> taskQueue = new LinkedBlockingQueue<>();
+
+    private ActiveTasksHandler activeTasksHandler = new ActiveTasksHandler();
 
 
     /**
@@ -31,6 +35,7 @@ public class TaskQueue {
      * @param tasks the tasks to submit to the queue
      */
     public void submitTask(Task... tasks) {
+        Preconditions.checkNotNull(tasks);
         Stream.of(tasks).filter(Objects::nonNull).forEach(task -> taskQueue.add(task));
     }
 
@@ -53,5 +58,9 @@ public class TaskQueue {
      */
     public Queue<Task> getTaskQueue() {
         return taskQueue;
+    }
+
+    public ActiveTasksHandler getActiveTasksHandler() {
+        return activeTasksHandler;
     }
 }

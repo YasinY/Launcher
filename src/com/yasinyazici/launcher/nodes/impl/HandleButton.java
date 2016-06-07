@@ -9,8 +9,8 @@ import javafx.scene.Node;
 public class HandleButton extends LauncherNode{
 
 
-    public HandleButton(Node... nodes) {
-        super(nodes);
+    public HandleButton(Node node) {
+        super(node);
     }
     @Override
     public void onClick() {

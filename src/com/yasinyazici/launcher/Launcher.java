@@ -24,12 +24,9 @@ public class Launcher extends Application {
         primaryStage.setScene(new Scene(parent));
         primaryStage.centerOnScreen();
         primaryStage.show();
-        initializeEngine();
     }
 
-    private void initializeEngine() {
-        new Engine().init();
-    }
+
 
 
 }

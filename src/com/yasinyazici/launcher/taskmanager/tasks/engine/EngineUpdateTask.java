@@ -20,10 +20,10 @@ public class EngineUpdateTask extends Task {
     }
 
     @Override
-    public Future<?> scheduledFuture() {
+    public Future<?> future() {
         return getScheduledExecutor().scheduleAtFixedRate(() -> {
-            System.out.println("Render here");
-        }, 0, 10, TimeUnit.SECONDS);
+
+        }, 0, 1, TimeUnit.SECONDS);
     }
 
     @Override
@@ -33,7 +33,7 @@ public class EngineUpdateTask extends Task {
 
     @Override
     public void onDestroy() {
-
+        System.out.println("Clearing by task defined things..");
     }
 
 

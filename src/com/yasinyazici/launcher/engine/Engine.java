@@ -21,7 +21,7 @@ public class Engine {
      * initializing the threads for the application
      */
     public void init() {
-        taskHandler.submitTasks();
+        taskHandler.initialiseTasks();
         taskHandler.getTaskExecutor().init();
         initializeThreads();
     }
@@ -33,4 +33,7 @@ public class Engine {
         new EngineUpdateThread().start();
     }
 
+    public TaskHandler getTaskHandler() {
+        return taskHandler;
+    }
 }
