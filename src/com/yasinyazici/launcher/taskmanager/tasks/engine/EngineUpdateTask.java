@@ -22,7 +22,7 @@ public class EngineUpdateTask extends Task {
     @Override
     public Future<?> future() {
         return getScheduledExecutor().scheduleAtFixedRate(() -> {
-
+                System.out.println("Tick");
         }, 0, 1, TimeUnit.SECONDS);
     }
 

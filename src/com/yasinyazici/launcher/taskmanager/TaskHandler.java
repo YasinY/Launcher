@@ -8,7 +8,6 @@ import javafx.scene.Node;
 /**
  * Created by Yasin on 03/06/2016.
  *
- * //TODO FIND A WAY OUT TO ADD AN ELEMENT TO A GENERIC LIST / SET
  */
 public class TaskHandler {
 
@@ -23,15 +22,9 @@ public class TaskHandler {
 
     public void initialiseTasks() {
         submitRegularTasks();
-        submitNodeTasks();
     }
     private void submitRegularTasks() {
-        taskExecutor.getTaskQueue().submitTask(new TerminationTask(("task_terminator")));
-        taskExecutor.getTaskQueue().submitTask(new EngineUpdateTask("engine_update"));
-    }
-
-    private void submitNodeTasks() {
-        taskExecutor.getTaskQueue().submitTask();
+        taskExecutor.getTaskQueue().submitTasks(new TerminationTask("task_terminator"), new EngineUpdateTask("engine_update"));
     }
 
     public TaskExecutor getTaskExecutor() {

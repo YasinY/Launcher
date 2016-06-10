@@ -25,11 +25,10 @@ public class TerminationTask extends Task {
     @Override
     public Future<?> future() {
         return getScheduledExecutor().scheduleAtFixedRate(() -> {
-            ActiveTasksHandler activeTasksHandler = getTaskQueue().getActiveTasksHandler();
-            activeTasksHandler.getActiveTasks().stream().filter(task -> task.destroyable()).forEach(task -> {
+            getTaskQueue().getActiveTasksHandler().getActiveTasks().stream().filter(task -> task.destroyable()).forEach(task -> {
                 task.onDestroy();
                 task.getScheduledExecutor().shutdownNow();
-                activeTasksHandler.removeTask(getTaskName());
+                getTaskQueue().getActiveTasksHandler().removeTask(getTaskName());
                 System.out.println("Successfully destroyed task!");
             });
         }, 0, 100, TimeUnit.MILLISECONDS);

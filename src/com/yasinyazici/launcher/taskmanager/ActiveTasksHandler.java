@@ -20,7 +20,10 @@ public class ActiveTasksHandler {
      * @param tasks the tasks to submit to the queue
      */
     public void submitTask(Task... tasks) {
-        Stream.of(tasks).filter(Objects::nonNull).forEach(task -> activeTasks.add(task));
+        Stream.of(tasks).filter(Objects::nonNull).forEach(task -> {
+            activeTasks.add(task);
+            System.out.println("Submitted active task " + task.getTaskName());
+        });
     }
 
     /**
@@ -33,9 +36,12 @@ public class ActiveTasksHandler {
         while (taskIterator.hasNext()) {
                 if(taskIterator.next().getTaskName().equalsIgnoreCase(taskName)) {
                     taskIterator.remove();
+                    System.out.println("Removed " + taskName);
                 }
         }
     }
+
+
 
     public Set<Task> getActiveTasks() {
         return activeTasks;

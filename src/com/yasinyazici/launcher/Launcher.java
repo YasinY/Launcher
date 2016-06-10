@@ -1,6 +1,6 @@
 package com.yasinyazici.launcher;
 
-import com.yasinyazici.launcher.engine.Engine;
+import com.yasinyazici.launcher.engine.threads.impl.EngineUpdateThread;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,6 +24,14 @@ public class Launcher extends Application {
         primaryStage.setScene(new Scene(parent));
         primaryStage.centerOnScreen();
         primaryStage.show();
+        initializeThreads();
+    }
+
+    /**
+     * The threads to initialize upon start up, see {@link com.yasinyazici.launcher.engine} as reference
+     */
+    private void initializeThreads() {
+        new EngineUpdateThread().start();
     }
 
 

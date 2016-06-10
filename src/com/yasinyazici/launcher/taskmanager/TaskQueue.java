@@ -17,26 +17,18 @@ public class TaskQueue {
 
     private ActiveTasksHandler activeTasksHandler = new ActiveTasksHandler();
 
-
-    /**
-     * Submits a task to the {@code tasks} ArrayList, allowing {@link TaskExecutor} to run the task
-     *
-     * @param task The task to submit to the queue
-     */
-    public void submitTask(Task task) {
-        System.out.println("Added task " + task.getTaskName());
-       // Preconditions.checkState(task.getTaskName().equalsIgnoreCase(""), "Please set a name for the task upon constructing.");
-        taskQueue.add(task);
-    }
-
     /**
      * Submits multiple tasks to the {@code tasks} ArrayList, allowing {@link TaskExecutor} to run the tasks
      *
      * @param tasks the tasks to submit to the queue
      */
-    public void submitTask(Task... tasks) {
+    public void submitTasks(Task... tasks) {
+
         Preconditions.checkNotNull(tasks);
-        Stream.of(tasks).filter(Objects::nonNull).forEach(task -> taskQueue.add(task));
+        Stream.of(tasks).filter(Objects::nonNull).forEach(task -> {
+            System.out.println("Submitted task to queue " + task.getTaskName());
+            taskQueue.add(task);
+        });
     }
 
     /**

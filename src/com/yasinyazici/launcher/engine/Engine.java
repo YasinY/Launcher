@@ -23,14 +23,6 @@ public class Engine {
     public void init() {
         taskHandler.initialiseTasks();
         taskHandler.getTaskExecutor().init();
-        initializeThreads();
-    }
-
-    /**
-     * The threads to initialize upon start up, see {@link com.yasinyazici.launcher.engine} as reference
-     */
-    private void initializeThreads() {
-        new EngineUpdateThread().start();
     }
 
     public TaskHandler getTaskHandler() {
