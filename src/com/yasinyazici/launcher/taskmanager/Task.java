@@ -1,8 +1,6 @@
 package com.yasinyazici.launcher.taskmanager;
 
 
-import com.yasinyazici.launcher.taskmanager.tasks.engine.TerminationTask;
-
 import java.util.concurrent.Future;
 
 /**
@@ -14,9 +12,10 @@ public abstract class Task extends TaskExecutor implements Runnable {
 
     private String taskName; //The name to identify the task with
 
-    public abstract Future<?> future(); //The task to execute
+    private boolean destroyable;
+    private boolean destroyed;
 
-    public abstract boolean destroyable(); //false by default
+    public abstract Future<?> future(); //The task to execute
 
 
     /**
@@ -30,12 +29,18 @@ public abstract class Task extends TaskExecutor implements Runnable {
 
     /**
      * Destroys a task if boolean {@code destroyable} equals true, throws exception otherwise.
-     * See  task {@link TerminationTask} as reference for further code.
      */
     public void onDestroy() {
 
     }
 
+    /**
+     * Initializement method
+     * Used to initialise steps before the actual task is being executed
+     */
+    public void initializeTask() {
+
+    }
     /**
      * The literal task code
      * Either we keep it abstract and force the run to appear or we just leave it with no abstract modifier
@@ -57,5 +62,23 @@ public abstract class Task extends TaskExecutor implements Runnable {
         return taskName;
     }
 
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
+    }
 
+    public boolean isDestroyable() {
+        return destroyable;
+    }
+
+    public void setDestroyable(boolean destroyable) {
+        this.destroyable = destroyable;
+    }
+
+    public boolean isDestroyed() {
+        return destroyed;
+    }
+
+    public void setDestroyed(boolean destroyed) {
+        this.destroyed = destroyed;
+    }
 }

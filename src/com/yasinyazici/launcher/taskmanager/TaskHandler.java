@@ -1,9 +1,7 @@
 package com.yasinyazici.launcher.taskmanager;
 
 import com.yasinyazici.launcher.taskmanager.tasks.engine.EngineUpdateTask;
-import com.yasinyazici.launcher.taskmanager.tasks.engine.TerminationTask;
-import javafx.scene.Node;
-
+import com.yasinyazici.launcher.taskmanager.tasks.engine.TaskTerminationTask;
 
 /**
  * Created by Yasin on 03/06/2016.
@@ -11,20 +9,14 @@ import javafx.scene.Node;
  */
 public class TaskHandler {
 
-    private TaskExecutor taskExecutor;
-
-    /**
-     * Creates a new {@link TaskHandler} instance
-     */
-    public TaskHandler() {
-        this.taskExecutor = new TaskExecutor();
-    }
+    private TaskExecutor taskExecutor = new TaskExecutor();
 
     public void initialiseTasks() {
         submitRegularTasks();
     }
+
     private void submitRegularTasks() {
-        taskExecutor.getTaskQueue().submitTasks(new TerminationTask("task_terminator"), new EngineUpdateTask("engine_update"));
+        TaskQueue.submitTasksToQueue(new EngineUpdateTask("engine_update"), new TaskTerminationTask("task_termination_task"));
     }
 
     public TaskExecutor getTaskExecutor() {

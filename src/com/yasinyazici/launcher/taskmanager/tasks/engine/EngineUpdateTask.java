@@ -20,15 +20,16 @@ public class EngineUpdateTask extends Task {
     }
 
     @Override
+    public void initializeTask() {
+        setDestroyable(true);
+        setTaskName("engine_update_task_init");
+    }
+    @Override
     public Future<?> future() {
         return getScheduledExecutor().scheduleAtFixedRate(() -> {
-                System.out.println("Tick");
-        }, 0, 1, TimeUnit.SECONDS);
-    }
 
-    @Override
-    public boolean destroyable() {
-        return true;
+                System.out.println("update");
+        }, 0, 1, TimeUnit.SECONDS);
     }
 
     @Override

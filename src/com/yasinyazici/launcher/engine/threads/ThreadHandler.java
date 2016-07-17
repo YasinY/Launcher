@@ -13,7 +13,8 @@ public class ThreadHandler {
         engineUpdateThread.start();
     }
 
-    public void getText() {
-
+    public EngineUpdateThread getEngineUpdateThread() {
+        return engineUpdateThread;
     }
+
 }

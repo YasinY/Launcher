@@ -10,10 +10,13 @@ import com.yasinyazici.launcher.engine.threads.ApplicationThread;
 public class EngineUpdateThread extends ApplicationThread {
 
     private Engine engine = new Engine();
+
     @Override
     public void run() {
+        if(isHasStopped())
+            this.interrupt();
         System.out.println("Engine Update thread initialized!");
         engine.init();
-
     }
+
 }

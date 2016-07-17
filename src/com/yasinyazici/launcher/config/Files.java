@@ -20,7 +20,6 @@ public class Files {
                 try {
                     registeredFile.createNewFile();
                 } catch (IOException e) {
-                    //TODO fix printstacktraces
                     e.printStackTrace();
                 }
             });

@@ -10,10 +10,20 @@ public abstract class ApplicationThread extends Thread  {
 
     private ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(2);
 
+    private boolean hasStopped;
+
     @Override
     public abstract void run();
 
     public ScheduledExecutorService getScheduledExecutorService() {
         return scheduledExecutorService;
+    }
+
+    public boolean isHasStopped() {
+        return hasStopped;
+    }
+
+    public void setHasStopped(boolean hasStopped) {
+        this.hasStopped = hasStopped;
     }
 }

@@ -2,7 +2,6 @@ package com.yasinyazici.launcher.taskmanager;
 
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -11,19 +10,15 @@ import java.util.stream.Stream;
  */
 public class ActiveTasksHandler {
 
-    private Set<Task> activeTasks = new HashSet<>(); //So it's accessible for every class,
-
+    public static Set<Task> activeTasks = new HashSet<>();
 
     /**
      * Submits multiple tasks to the {@code tasks} ArrayList, allowing {@link TaskExecutor} to run the tasks
      *
      * @param tasks the tasks to submit to the queue
      */
-    public void submitTask(Task... tasks) {
-        Stream.of(tasks).filter(Objects::nonNull).forEach(task -> {
-            activeTasks.add(task);
-            System.out.println("Submitted active task " + task.getTaskName());
-        });
+    public static void submitTask(Task... tasks) {
+        Stream.of(tasks).forEach(task -> activeTasks.add(task));
     }
 
     /**
@@ -31,7 +26,7 @@ public class ActiveTasksHandler {
      *
      * @param taskName The task to delete, identified through the task name
      */
-    public void removeTask(String taskName) {
+    public static void removeActiveTask(String taskName) {
         Iterator<Task> taskIterator = activeTasks.iterator();
         while (taskIterator.hasNext()) {
                 if(taskIterator.next().getTaskName().equalsIgnoreCase(taskName)) {
@@ -39,11 +34,5 @@ public class ActiveTasksHandler {
                     System.out.println("Removed " + taskName);
                 }
         }
-    }
-
-
-
-    public Set<Task> getActiveTasks() {
-        return activeTasks;
     }
 }
