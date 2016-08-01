@@ -1,6 +1,6 @@
-package com.yasinyazici.launcher.taskmanager.tasks.engine;
+package com.yasinyazici.launcher.tasks.impl;
 
-import com.yasinyazici.launcher.taskmanager.Task;
+import com.yasinyazici.launcher.tasks.Task;
 
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
@@ -21,7 +21,7 @@ public class EngineUpdateTask extends Task {
 
     @Override
     public void initializeTask() {
-        setDestroyable(true);
+        setDestroyable(false);
         setTaskName("engine_update_task_init");
     }
     @Override

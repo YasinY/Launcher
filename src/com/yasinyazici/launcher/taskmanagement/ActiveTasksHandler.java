@@ -1,4 +1,6 @@
-package com.yasinyazici.launcher.taskmanager;
+package com.yasinyazici.launcher.taskmanagement;
+
+import com.yasinyazici.launcher.tasks.Task;
 
 import java.util.HashSet;
 import java.util.Iterator;

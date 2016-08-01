@@ -1,7 +1,7 @@
-package com.yasinyazici.launcher.taskmanager;
+package com.yasinyazici.launcher.taskmanagement;
 
-import com.yasinyazici.launcher.taskmanager.tasks.engine.EngineUpdateTask;
-import com.yasinyazici.launcher.taskmanager.tasks.engine.TaskTerminationTask;
+import com.yasinyazici.launcher.tasks.impl.EngineUpdateTask;
+import com.yasinyazici.launcher.tasks.impl.TaskTerminationTask;
 
 /**
  * Created by Yasin on 03/06/2016.

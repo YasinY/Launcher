@@ -1,6 +1,7 @@
-package com.yasinyazici.launcher.taskmanager;
+package com.yasinyazici.launcher.taskmanagement;
 
-import java.util.Iterator;
+import com.yasinyazici.launcher.tasks.Task;
+
 import java.util.Objects;
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -9,16 +10,16 @@ import java.util.stream.Stream;
 /**
  * Created by Yasin on 03/06/2016.
  */
-class TaskQueue {
+public class TaskQueue {
 
-    static Queue<Task> taskQueue = new LinkedBlockingQueue<>();
+    public static Queue<Task> taskQueue = new LinkedBlockingQueue<>();
 
     /**
      * Submits multiple tasks to the {@code tasks} ArrayList, allowing {@link TaskExecutor} to run the tasks
      *
      * @param tasks the tasks to submit to the queue
      */
-    static void submitTasksToQueue(Task... tasks) {
+    public static void submitTasksToQueue(Task... tasks) {
         Stream.of(tasks).filter(Objects::nonNull).forEach(task -> {
             System.out.println("Submitted task to queue " + task.getTaskName());
             taskQueue.add(task);

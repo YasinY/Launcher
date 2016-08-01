@@ -1,4 +1,6 @@
-package com.yasinyazici.launcher.taskmanager;
+package com.yasinyazici.launcher.taskmanagement;
+
+import com.yasinyazici.launcher.tasks.Task;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;

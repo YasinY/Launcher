@@ -2,7 +2,7 @@ package com.yasinyazici.launcher.engine;
 
 import com.yasinyazici.launcher.config.Directories;
 import com.yasinyazici.launcher.config.Files;
-import com.yasinyazici.launcher.taskmanager.TaskHandler;
+import com.yasinyazici.launcher.taskmanagement.TaskHandler;
 
 /**
  * Created by Yasin on 03/06/2016.

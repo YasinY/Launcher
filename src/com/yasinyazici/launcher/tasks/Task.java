@@ -1,5 +1,7 @@
-package com.yasinyazici.launcher.taskmanager;
+package com.yasinyazici.launcher.tasks;
 
+
+import com.yasinyazici.launcher.taskmanagement.TaskExecutor;
 
 import java.util.concurrent.Future;
 

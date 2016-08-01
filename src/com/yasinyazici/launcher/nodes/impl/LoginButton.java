@@ -14,6 +14,6 @@ public class LoginButton extends LauncherNode{
     }
     @Override
     public void onClick() {
-
+            System.out.println("Onclick done");
     }
 }

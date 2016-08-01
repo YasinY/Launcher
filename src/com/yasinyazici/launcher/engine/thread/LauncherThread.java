@@ -1,4 +1,4 @@
-package com.yasinyazici.launcher.engine.threads;
+package com.yasinyazici.launcher.engine.thread;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -6,7 +6,7 @@ import java.util.concurrent.ScheduledExecutorService;
 /**
  * Created by Yasin on 10/06/2016.
  */
-public abstract class ApplicationThread extends Thread  {
+public abstract class LauncherThread extends Thread  {
 
     private ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(2);
 
@@ -19,11 +19,4 @@ public abstract class ApplicationThread extends Thread  {
         return scheduledExecutorService;
     }
 
-    public boolean isHasStopped() {
-        return hasStopped;
-    }
-
-    public void setHasStopped(boolean hasStopped) {
-        this.hasStopped = hasStopped;
-    }
 }

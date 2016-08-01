@@ -16,7 +16,7 @@ public class Directories {
     public final static File[] directories = {LAUNCHER_DIRECTORY, IMAGES_PATH, COPYRIGHT_PATH};
 
     public void initDirectories() {
-        Stream.of(directories).filter(directory -> !directory.exists()).forEach(directory -> directory.mkdir());
+        Stream.of(directories).filter(directory -> !directory.exists()).forEach(File::mkdir);
         System.out.println("Initialized directories!");
     }
 }
